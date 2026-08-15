@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed information, summary, price, ratings, and reviews for The Alchemist by Paulo Coelho.">
+  <title>The Alchemist by Paulo Coelho - Book Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">📚</div>
+        <span class="logo-title">BookHub</span>
+      </a>
+
+      <div class="nav-controls">
+        <a href="index.html?favorites=true" class="btn-icon" title="View Favorites" aria-label="Favorites">
+          ❤️
+          <span id="bookmarkCountBadge" class="bookmark-count-badge hidden">0</span>
+        </a>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="detail-container">
+    
+    <a href="index.html" class="back-link" onclick="if(document.referrer && document.referrer.includes(window.location.host)){ history.back(); return false; }">← Back to Books List</a>
+
+    <article class="book-detail-card">
+      <div class="detail-layout">
+        
+        <div class="detail-cover-wrapper">
+          <img src="images/alchemist.jpeg" alt="The Alchemist Book Cover" class="detail-cover-img" onerror="this.src='https://via.placeholder.com/300x400?text=The+Alchemist'">
+        </div>
+
+        <div class="detail-main-info">
+          <span class="detail-genre-badge">Fiction</span>
+          <h1 class="detail-title">The Alchemist</h1>
+          <p class="detail-author">by Paulo Coelho</p>
+
+          <div class="detail-meta-table">
+            <div class="meta-box">
+              <span class="meta-label">Price</span>
+              <span class="meta-value price">₹299</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Published</span>
+              <span class="meta-value">1988</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Publisher</span>
+              <span class="meta-value">HarperCollins</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Overall Rating</span>
+              <span class="meta-value" style="color:var(--star-filled);">4.8 ★</span>
+            </div>
+          </div>
+
+          <h2 class="section-heading">📖 Book Summary</h2>
+          <p class="detail-description">
+            The Alchemist is a world-renowned novel about a young Andalusian shepherd named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried near the Pyramids. Along the way he meets a Gypsy woman, a man who calls himself king, and an alchemist, all of whom point Santiago in the direction of his quest. The story teaches about listening to your heart, recognizing opportunity, and following your dreams.
+          </p>
+
+          <div class="interaction-bar">
+            <div class="user-rating-widget">
+              <span class="rating-prompt">Your Rating:</span>
+              <div class="star-rating-input">
+                <input type="radio" id="star5" name="userRating" value="5"><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="userRating" value="4"><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="userRating" value="3"><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="userRating" value="2"><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="userRating" value="1"><label for="star1" title="1 star">★</label>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:0.75rem;">
+              <button id="detailBookmarkBtn" class="btn btn-secondary">🤍 Add to Favorites</button>
+              <button id="shareBtn" class="btn btn-secondary" title="Share book page">🔗 Share</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Reviews & Discussion -->
+    <section class="reviews-container">
+      <h2 class="section-heading">💬 Reader Reviews & Discussion</h2>
+      
+      <form id="reviewForm" class="review-form">
+        <div class="form-group">
+          <label for="reviewerName" class="form-label">Your Name</label>
+          <input type="text" id="reviewerName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+        </div>
+        <div class="form-group">
+          <label for="reviewText" class="form-label">Your Review</label>
+          <textarea id="reviewText" class="form-textarea" placeholder="Share your thoughts about Santiago's journey and theme..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Post Review</button>
+      </form>
+
+      <div id="reviewsList" class="reviews-list">
+        <!-- Rendered via script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 BookHub Information Website. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initDetailPage(1);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed information, summary, price, ratings, and reviews for Wings of Fire by Dr. A.P.J. Abdul Kalam.">
+  <title>Wings of Fire by Dr. A.P.J. Abdul Kalam - Book Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">📚</div>
+        <span class="logo-title">BookHub</span>
+      </a>
+
+      <div class="nav-controls">
+        <a href="index.html?favorites=true" class="btn-icon" title="View Favorites" aria-label="Favorites">
+          ❤️
+          <span id="bookmarkCountBadge" class="bookmark-count-badge hidden">0</span>
+        </a>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="detail-container">
+    
+    <a href="index.html" class="back-link" onclick="if(document.referrer && document.referrer.includes(window.location.host)){ history.back(); return false; }">← Back to Books List</a>
+
+    <article class="book-detail-card">
+      <div class="detail-layout">
+        
+        <div class="detail-cover-wrapper">
+          <img src="images/The_Wings_of_fire.jpeg" alt="Wings of Fire Book Cover" class="detail-cover-img" onerror="this.src='https://via.placeholder.com/300x400?text=Wings+of+Fire'">
+        </div>
+
+        <div class="detail-main-info">
+          <span class="detail-genre-badge">Autobiography</span>
+          <h1 class="detail-title">Wings of Fire</h1>
+          <p class="detail-author">by Dr. A.P.J. Abdul Kalam</p>
+
+          <div class="detail-meta-table">
+            <div class="meta-box">
+              <span class="meta-label">Price</span>
+              <span class="meta-value price">₹350</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Published</span>
+              <span class="meta-value">1999</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Publisher</span>
+              <span class="meta-value">Universities Press</span>
+            </div>
+            <div class="meta-box">
+              <span class="meta-label">Overall Rating</span>
+              <span class="meta-value" style="color:var(--star-filled);">4.9 ★</span>
+            </div>
+          </div>
+
+          <h2 class="section-heading">📖 Book Summary</h2>
+          <p class="detail-description">
+            Wings of Fire is an inspirational autobiography of Dr. A.P.J. Abdul Kalam, the former President of India and renowned aerospace scientist. The book covers his early life, struggles, hardships, fortitude, and the chance opportunities that led him to lead India's space research, missile development, and nuclear programs. It is an uplifting story of courage, perseverance, and dedication to nation-building.
+          </p>
+
+          <div class="interaction-bar">
+            <div class="user-rating-widget">
+              <span class="rating-prompt">Your Rating:</span>
+              <div class="star-rating-input">
+                <input type="radio" id="star5" name="userRating" value="5"><label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="userRating" value="4"><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="userRating" value="3"><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="userRating" value="2"><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="userRating" value="1"><label for="star1" title="1 star">★</label>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:0.75rem;">
+              <button id="detailBookmarkBtn" class="btn btn-secondary">🤍 Add to Favorites</button>
+              <button id="shareBtn" class="btn btn-secondary" title="Share book page">🔗 Share</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Reviews & Discussion -->
+    <section class="reviews-container">
+      <h2 class="section-heading">💬 Reader Reviews & Discussion</h2>
+      
+      <form id="reviewForm" class="review-form">
+        <div class="form-group">
+          <label for="reviewerName" class="form-label">Your Name</label>
+          <input type="text" id="reviewerName" class="form-input" placeholder="e.g. Ramesh Kumar" required>
+        </div>
+        <div class="form-group">
+          <label for="reviewText" class="form-label">Your Review</label>
+          <textarea id="reviewText" class="form-textarea" placeholder="Share your thoughts on Dr. Kalam's remarkable life story..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Post Review</button>
+      </form>
+
+      <div id="reviewsList" class="reviews-list">
+        <!-- Rendered via script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 BookHub Information Website. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initDetailPage(2);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+.atom/
+.netbeans/
+.project
+.pydevproject
+.settings/
+*.iml
+
+# Package Managers
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# Build & Temp Files
+dist/
+build/
+temp/
+tmp/
+*.log
+
+# Environment & Credentials
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# IDE Plugins
+.vscode-test/
+.history/
+
+# Miscellaneous
+*.bak
+*.orig
+.cache/
