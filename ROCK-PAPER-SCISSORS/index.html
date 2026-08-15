@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Rock Paper Scissors Mind Reader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Fullscreen celebration confetti canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <small class="tag">COMPUTER VISION + ADAPTIVE MARKOV AI</small>
+        <h1>Rock Paper Scissors <em class="glow">Mind Reader</em></h1>
+        <p>The AI locks its move before seeing your hand. Can you outsmart the algorithm?</p>
+      </div>
+
+      <div class="header-controls">
+        <button id="soundBtn" class="icon-btn" title="Toggle Sound (M)" aria-label="Toggle Sound">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <div class="select-wrapper">
+          <label for="difficultySelect">AI Brain:</label>
+          <select id="difficultySelect">
+            <option value="easy">Novice (Predictable)</option>
+            <option value="medium" selected>Mind Reader (Adaptive)</option>
+            <option value="hard">Psychic Master (Counter-Tactical)</option>
+          </select>
+        </div>
+        <b id="status" class="status-pill">● Camera off</b>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN: Camera Feed & Controls -->
+      <section class="card camera-card">
+        <div class="head">
+          <div>
+            <h2>Live Hand Detection</h2>
+            <p id="instruction">Start the camera, or play instantly using manual controls below.</p>
+          </div>
+          <div class="badge-group">
+            <span id="badge" class="badge">Waiting</span>
+            <span id="streakBadge" class="streak-badge">🔥 0 Streak</span>
+          </div>
+        </div>
+
+        <!-- Mode Toggle Tabs -->
+        <div class="mode-tabs">
+          <button id="tabCam" class="tab-btn active">📷 Camera Vision</button>
+          <button id="tabManual" class="tab-btn">⌨️ Manual Play</button>
+        </div>
+
+        <div class="video-container">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="canvas"></canvas>
+          <div id="countdown" class="countdown-overlay"></div>
+          <div id="overlay" class="video-overlay">
+            <div class="overlay-content">
+              <div class="camera-icon-pulse">📷</div>
+              <strong>Camera is Off</strong>
+              <span>Click "Start Camera" or select Manual Play to begin.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Camera & Game Action Buttons -->
+        <div class="buttons">
+          <button id="cameraBtn" class="btn primary">Start Camera</button>
+          <button id="roundBtn" class="btn action-btn">Start Round <kbd>Space</kbd></button>
+          <button id="resetBtn" class="btn danger">Reset Game</button>
+          <label class="toggle-label" title="Automatically trigger next round after a completion">
+            <input type="checkbox" id="autoPlayToggle">
+            <span>Auto-Play</span>
+          </label>
+        </div>
+
+        <!-- Manual Gesture Overrides / Keyboard Controls -->
+        <div id="manualControls" class="manual-panel">
+          <div class="manual-title">
+            <span>Manual Choice (Play without Camera):</span>
+          </div>
+          <div class="manual-buttons">
+            <button class="manual-btn" data-move="rock">✊ Rock <kbd>1</kbd></button>
+            <button class="manual-btn" data-move="paper">✋ Paper <kbd>2</kbd></button>
+            <button class="manual-btn" data-move="scissors">✌️ Scissors <kbd>3</kbd></button>
+          </div>
+        </div>
+
+        <div class="hotkeys-bar">
+          <small>⚡ Shortcuts: <kbd>Space</kbd> Start Round | <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> Manual Move | <kbd>M</kbd> Mute | <kbd>C</kbd> Camera</small>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Battle Arena & Cyber AI Avatar -->
+      <section class="card battle-card">
+        <!-- Animated AI Mind Reader Avatar & Speech Bubble -->
+        <div class="ai-avatar-section">
+          <div class="avatar-container">
+            <svg id="aiBrainSvg" viewBox="0 0 100 100" class="ai-brain-avatar">
+              <!-- Glow background -->
+              <circle cx="50" cy="50" r="42" fill="url(#brainGlow)" opacity="0.3" />
+              <!-- Outer Ring -->
+              <circle cx="50" cy="50" r="40" stroke="url(#ringGrad)" stroke-width="2" fill="none" class="rotating-ring" />
+              <!-- Brain Lobes -->
+              <path d="M 30,50 Q 25,30 50,25 Q 75,30 70,50 Q 75,70 50,75 Q 25,70 30,50 Z" fill="#151d2c" stroke="#7c5cff" stroke-width="2.5" class="brain-body"/>
+              <!-- Neural Connections -->
+              <path d="M 35,40 L 50,35 L 65,40 M 35,60 L 50,65 L 65,60 M 50,25 L 50,75 M 30,50 L 70,50" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="2 2" class="neural-lines"/>
+              <!-- Cyber Eyes -->
+              <circle id="eyeLeft" cx="40" cy="45" r="4" fill="#00d4ff" class="cyber-eye"/>
+              <circle id="eyeRight" cx="60" cy="45" r="4" fill="#00d4ff" class="cyber-eye"/>
+              <!-- Core Processor Gem -->
+              <polygon points="50,48 55,55 50,62 45,55" fill="#7c5cff" class="core-gem"/>
+              
+              <defs>
+                <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#7c5cff" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00d4ff"/>
+                  <stop offset="100%" stop-color="#7c5cff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="speech-bubble">
+            <div id="aiSpeech" class="speech-text">Greetings human! Start a round, and I'll predict your gesture before you even show it.</div>
+          </div>
+        </div>
+
+        <div class="battle-arena">
+          <div class="fighter player-side">
+            <small>YOU</small>
+            <div id="player" class="move-display">—</div>
+            <p id="confidence">No gesture detected</p>
+          </div>
+          <div class="vs-divider">
+            <span>VS</span>
+          </div>
+          <div class="fighter ai-side">
+            <small>AI MIND READER</small>
+            <div id="ai" class="move-display">—</div>
+            <p id="aiStatus">Not locked</p>
+          </div>
+        </div>
+
+        <div id="result" class="result-banner">
+          <strong id="resultTitle">Ready?</strong>
+          <span id="resultSub">Start a round to challenge the AI prediction engine.</span>
+        </div>
+
+        <div class="scores-grid">
+          <div class="score-card">
+            <span>YOU</span>
+            <strong id="you">0</strong>
+          </div>
+          <div class="score-card">
+            <span>AI</span>
+            <strong id="ais">0</strong>
+          </div>
+          <div class="score-card">
+            <span>DRAW</span>
+            <strong id="draw">0</strong>
+          </div>
+          <div class="score-card highlight">
+            <span>WIN RATE</span>
+            <strong id="winRate">0%</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI INTELLIGENCE & PATTERN MATRIX -->
+      <section class="card stats-card">
+        <div class="head">
+          <div>
+            <h2>AI Pattern Intelligence</h2>
+            <p>Based on your sequence history & Markov transition probabilities.</p>
+          </div>
+        </div>
+        <div class="meter-container">
+          <div class="meter-text">
+            <span>Pattern Predictability</span>
+            <strong id="pred">0%</strong>
+          </div>
+          <div class="meter-bar">
+            <i id="bar"></i>
+          </div>
+        </div>
+        <p id="hint" class="ai-hint">Play a few rounds so the AI can analyze your psychological patterns.</p>
+        
+        <div class="probs-grid">
+          <div class="prob-item">
+            <span>✊ Rock Prob.</span>
+            <b id="rp">33%</b>
+          </div>
+          <div class="prob-item">
+            <span>✋ Paper Prob.</span>
+            <b id="pp">33%</b>
+          </div>
+          <div class="prob-item">
+            <span>✌️ Scissors Prob.</span>
+            <b id="sp">33%</b>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS BADGES CARD -->
+      <section class="card achievements-card">
+        <div class="head">
+          <div>
+            <h2>Mind Reader Achievements</h2>
+            <p>Unlock badges by outsmarting the AI or discovering patterns.</p>
+          </div>
+        </div>
+        <div id="achievementsGrid" class="achievements-grid">
+          <div class="badge-item locked" data-badge="first_win">
+            <span class="badge-icon">🎯</span>
+            <div class="badge-info">
+              <strong>First Blood</strong>
+              <small>Win your first round against the AI</small>
+            </div>
+          </div>
+          <div class="badge-item locked" data-badge="streak_3">
+            <span class="badge-icon">🔥</span>
+            <div class="badge-info">
+              <strong>Triple Threat</strong>
+              <small>Achieve a 3-win streak</small>
+            </div>
+          </div>
+          <div class="badge-item locked" data-badge="unpredictable">
+            <span class="badge-icon">🌀</span>
+            <div class="badge-info">
+              <strong>Chaos Agent</strong>
+              <small>Keep AI predictability under 25% for 5 rounds</small>
+            </div>
+          </div>
+          <div class="badge-item locked" data-badge="mind_bender">
+            <span class="badge-icon">🧠</span>
+            <div class="badge-info">
+              <strong>Mind Bender</strong>
+              <small>Beat Psychic Master AI level</small>
+            </div>
+          </div>
+          <div class="badge-item locked" data-badge="veteran">
+            <span class="badge-icon">👑</span>
+            <div class="badge-info">
+              <strong>Grandmaster</strong>
+              <small>Play 15 rounds total</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROUND HISTORY LOG -->
+      <section class="card history-card">
+        <div class="head">
+          <div>
+            <h2>Round History</h2>
+            <p id="count">0 rounds completed</p>
+          </div>
+        </div>
+        <div id="history" class="history-list">
+          <p class="empty-state">No rounds played yet. Click "Start Round" or use shortcut keys!</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

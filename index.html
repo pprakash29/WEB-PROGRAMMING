@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Web Programming | Projects</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 45px;
+        }
+
+        .header .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: #cbd5e1;
+            font-size: 17px;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 35px 25px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.13);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 18px;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            min-height: 75px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #ffffff;
+            background: #2563eb;
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.05);
+        }
+
+        .game-btn {
+            background: #7c3aed;
+        }
+
+        .game-btn:hover {
+            background: #6d28d9;
+        }
+
+        footer {
+            margin-top: 45px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="icon">💻</div>
+
+            <h1>Web Programming</h1>
+
+            <p>
+                Web Programming Lab Projects
+            </p>
+
+            <div class="subtitle">
+                B.Tech CSE • Software Engineering
+            </div>
+        </div>
+
+
+        <!-- Projects -->
+        <div class="projects">
+
+            <!-- Lab 1 -->
+            <div class="card">
+
+                <div class="card-icon">📚</div>
+
+                <h2>Lab 1</h2>
+
+                <p>
+                    Book Information Website featuring a collection
+                    of books with detailed information for each book.
+                </p>
+
+                <a
+                    href="./LAB%201/Book-Information-Website/index.html"
+                    class="btn">
+                    Open Lab 1
+                </a>
+
+            </div>
+
+
+            <!-- Lab 2 -->
+            <div class="card">
+
+                <div class="card-icon">📦</div>
+
+                <h2>Lab 2</h2>
+
+                <p>
+                    Product Inventory Hub with an interactive dashboard
+                    for viewing and managing product information.
+                </p>
+
+                <a
+                    href="./LAB%202/Product-Inventory-Hub/index.html"
+                    class="btn">
+                    Open Lab 2
+                </a>
+
+            </div>
+
+
+            <!-- Rock Paper Scissors -->
+            <div class="card">
+
+                <div class="card-icon">🎮</div>
+
+                <h2>Rock Paper Scissors</h2>
+
+                <p>
+                    An interactive Rock Paper Scissors game built
+                    using HTML, CSS and JavaScript.
+                </p>
+
+                <a
+                    href="./ROCK-PAPER-SCISSORS/index.html"
+                    class="btn game-btn">
+                    Play Game
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            © 2026 Web Programming Projects
+        </footer>
+
+    </div>
+
+</body>
+</html>
