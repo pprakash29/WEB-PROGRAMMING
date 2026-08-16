@@ -7,226 +7,1270 @@
     <title>Web Programming | Projects</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
+        html {
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+
+            color: #172033;
+
+            /*
+                BLUE + VIOLET BACKGROUND
+                No plain white background
+            */
+
+            background:
+                radial-gradient(
+                    circle at 8% 12%,
+                    rgba(14, 165, 233, 0.55),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 92% 15%,
+                    rgba(124, 58, 237, 0.45),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 80% 90%,
+                    rgba(59, 130, 246, 0.40),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #dbeafe 0%,
+                    #d8e4ff 35%,
+                    #e4ddff 70%,
+                    #dbeafe 100%
+                );
+
+            overflow-x: hidden;
+
+            padding: 50px 25px;
+        }
+
+
+        /* =====================================
+           BACKGROUND BLOBS
+        ====================================== */
+
+        .blob {
+            position: fixed;
+
+            border-radius: 50%;
+
+            filter: blur(75px);
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            animation:
+                floatingBlob
+                10s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+
+        .blob-blue {
+            width: 320px;
+            height: 320px;
+
+            background: #0ea5e9;
+
+            top: -130px;
+            left: -120px;
+
+            opacity: 0.35;
+        }
+
+
+        .blob-violet {
+            width: 300px;
+            height: 300px;
+
+            background: #7c3aed;
+
+            top: 35%;
+            right: -130px;
+
+            opacity: 0.30;
+
+            animation-delay: 2s;
+        }
+
+
+        .blob-sky {
+            width: 280px;
+            height: 280px;
+
+            background: #2563eb;
+
+            bottom: -120px;
+            left: 35%;
+
+            opacity: 0.25;
+
+            animation-delay: 4s;
+        }
+
+
+        @keyframes floatingBlob {
+
+            0% {
+                transform:
+                    translate(0, 0)
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    translate(45px, -35px)
+                    scale(1.12);
+            }
+
+            100% {
+                transform:
+                    translate(-30px, 40px)
+                    scale(0.95);
+            }
+        }
+
+
+        /* =====================================
+           CONTAINER
+        ====================================== */
 
         .container {
             width: 100%;
-            max-width: 1100px;
-            text-align: center;
+            max-width: 1150px;
+
+            margin: auto;
         }
+
+
+        /* =====================================
+           HEADER
+        ====================================== */
 
         .header {
-            margin-bottom: 45px;
+            text-align: center;
+
+            margin-bottom: 55px;
+
+            animation:
+                headerAppear
+                0.9s
+                ease;
         }
 
-        .header .icon {
-            font-size: 55px;
+
+        .header-icon {
+            width: 90px;
+            height: 90px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 44px;
+
+            border-radius: 27px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.55),
+                    rgba(255, 255, 255, 0.25)
+                );
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.65);
+
+            backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(37, 99, 235, 0.20);
+
+            animation:
+                iconFloat
+                3s
+                ease-in-out
+                infinite;
+        }
+
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+        }
+
+
+        @keyframes headerAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .header h1 {
+
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    60px
+                );
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0369a1,
+                    #2563eb,
+                    #6d28d9,
+                    #7c3aed
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+
             margin-bottom: 15px;
         }
 
-        .header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
-        }
 
         .header p {
-            color: #cbd5e1;
-            font-size: 17px;
+
+            color: #334155;
+
+            font-size: 18px;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
         }
+
 
         .subtitle {
-            margin-top: 8px;
-            color: #94a3b8;
+
+            color: #475569;
+
             font-size: 14px;
+
+            letter-spacing: 0.5px;
         }
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
 
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 35px 25px;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
+        /* =====================================
+           SECTION TITLE
+        ====================================== */
 
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.13);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
+        .section-title {
 
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 18px;
-        }
+            text-align: center;
 
-        .card h2 {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
+            color: #334155;
 
-        .card p {
-            color: #cbd5e1;
-            line-height: 1.6;
-            min-height: 75px;
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
             margin-bottom: 25px;
         }
 
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            color: #ffffff;
-            background: #2563eb;
-            padding: 12px 26px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
+
+        /* =====================================
+           PROJECT GRID
+        ====================================== */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
         }
+
+
+        /* =====================================
+           CARD
+        ====================================== */
+
+        .card {
+
+            position: relative;
+
+            min-height: 375px;
+
+            padding: 32px 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            border-radius: 26px;
+
+            /*
+                Slightly transparent card
+                so blue background is visible
+            */
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.58
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.65
+                );
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+
+                0 15px 40px
+                rgba(
+                    30,
+                    64,
+                    175,
+                    0.12
+                );
+
+            overflow: hidden;
+
+            transition:
+
+                transform
+                0.45s ease,
+
+                box-shadow
+                0.45s ease,
+
+                border-color
+                0.45s ease;
+
+            animation:
+                cardAppear
+                0.8s
+                ease
+                backwards;
+        }
+
+
+        .card:nth-child(1) {
+            animation-delay: 0.15s;
+        }
+
+
+        .card:nth-child(2) {
+            animation-delay: 0.30s;
+        }
+
+
+        .card:nth-child(3) {
+            animation-delay: 0.45s;
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(45px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================
+           CARD COLOUR GLOW
+        ====================================== */
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 210px;
+            height: 210px;
+
+            border-radius: 50%;
+
+            top: -105px;
+            right: -105px;
+
+            background:
+                var(--accent);
+
+            opacity: 0.16;
+
+            filter: blur(30px);
+
+            transition:
+                transform 0.5s ease,
+                opacity 0.5s ease;
+        }
+
+
+        .card:hover::before {
+
+            transform:
+                scale(1.7);
+
+            opacity:
+                0.30;
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-14px);
+
+            border-color:
+                var(--accent);
+
+            box-shadow:
+
+                0 25px 60px
+                rgba(
+                    30,
+                    64,
+                    175,
+                    0.18
+                ),
+
+                0 0 35px
+                var(--glow);
+        }
+
+
+        /* =====================================
+           CARD TOP
+        ====================================== */
+
+        .card-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+
+        .card-icon {
+
+            width: 66px;
+            height: 66px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 31px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.72
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.65
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    30,
+                    64,
+                    175,
+                    0.10
+                );
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        .card:hover .card-icon {
+
+            transform:
+                rotate(-7deg)
+                scale(1.1);
+
+            box-shadow:
+                0 10px 28px
+                var(--glow);
+        }
+
+
+        .project-number {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            padding:
+                7px 12px;
+
+            border-radius: 20px;
+
+            color:
+                var(--accent);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.70
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.60
+                );
+        }
+
+
+        /* =====================================
+           CARD CONTENT
+        ====================================== */
+
+        .card h2 {
+
+            font-size: 24px;
+
+            color: #172033;
+
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+
+            color: #475569;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            flex: 1;
+
+            margin-bottom: 24px;
+        }
+
+
+        /* =====================================
+           TAGS
+        ====================================== */
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .tag {
+
+            padding:
+                6px 10px;
+
+            border-radius:
+                8px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                600;
+
+            color:
+                var(--accent);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.55
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.60
+                );
+        }
+
+
+        /* =====================================
+           BUTTON
+        ====================================== */
+
+        .btn {
+
+            position: relative;
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            padding:
+                13px 20px;
+
+            border-radius:
+                12px;
+
+            text-decoration:
+                none;
+
+            color: white;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-light)
+                );
+
+            box-shadow:
+                0 8px 22px
+                var(--glow);
+
+            overflow:
+                hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        /* BUTTON SHINE */
+
+        .btn::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -120%;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.35
+                    ),
+                    transparent
+                );
+
+            transition:
+                left 0.6s ease;
+        }
+
+
+        .btn:hover::before {
+
+            left: 120%;
+        }
+
 
         .btn:hover {
-            background: #1d4ed8;
-            transform: scale(1.05);
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 12px 30px
+                var(--glow);
         }
 
-        .game-btn {
-            background: #7c3aed;
+
+        .arrow {
+
+            transition:
+                transform 0.3s ease;
         }
 
-        .game-btn:hover {
-            background: #6d28d9;
+
+        .btn:hover .arrow {
+
+            transform:
+                translateX(6px);
         }
+
+
+        /* =====================================
+           INDIVIDUAL CARD COLOURS
+        ====================================== */
+
+        .lab1 {
+
+            --accent:
+                #0284c7;
+
+            --accent-light:
+                #0ea5e9;
+
+            --glow:
+                rgba(
+                    2,
+                    132,
+                    199,
+                    0.30
+                );
+        }
+
+
+        .lab2 {
+
+            --accent:
+                #7c3aed;
+
+            --accent-light:
+                #8b5cf6;
+
+            --glow:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.30
+                );
+        }
+
+
+        .game {
+
+            --accent:
+                #4f46e5;
+
+            --accent-light:
+                #7c3aed;
+
+            --glow:
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.30
+                );
+        }
+
+
+        /* =====================================
+           FOOTER
+        ====================================== */
 
         footer {
-            margin-top: 45px;
-            color: #94a3b8;
-            font-size: 14px;
+
+            text-align: center;
+
+            margin-top: 50px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.45
+                );
+
+            color:
+                #475569;
+
+            font-size:
+                13px;
         }
 
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 32px;
-            }
+
+        footer span {
+
+            font-weight:
+                700;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0284c7,
+                    #6366f1,
+                    #7c3aed
+                );
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+            background-clip:
+                text;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (max-width: 900px) {
 
             .projects {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
             }
         }
+
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    35px 18px;
+            }
+
+
+            .header {
+
+                margin-bottom:
+                    40px;
+            }
+
+
+            .header h1 {
+
+                font-size:
+                    38px;
+            }
+
+
+            .header p {
+
+                font-size:
+                    16px;
+            }
+
+
+            .projects {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .card {
+
+                min-height:
+                    350px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
+
+
+    <!-- =====================================
+         ANIMATED BACKGROUND
+    ====================================== -->
+
+    <div class="blob blob-blue"></div>
+
+    <div class="blob blob-violet"></div>
+
+    <div class="blob blob-sky"></div>
+
 
     <div class="container">
 
-        <!-- Header -->
-        <div class="header">
-            <div class="icon">💻</div>
 
-            <h1>Web Programming</h1>
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <header class="header">
+
+
+            <div class="header-icon">
+                💻
+            </div>
+
+
+            <h1>
+                Web Programming
+            </h1>
+
 
             <p>
-                Web Programming Lab Projects
+                Interactive Lab Projects & Applications
             </p>
+
 
             <div class="subtitle">
                 B.Tech CSE • Software Engineering
             </div>
+
+
+        </header>
+
+
+        <!-- =====================================
+             SECTION TITLE
+        ====================================== -->
+
+        <div class="section-title">
+            My Projects
         </div>
 
 
-        <!-- Projects -->
-        <div class="projects">
+        <!-- =====================================
+             PROJECTS
+        ====================================== -->
 
-            <!-- Lab 1 -->
-            <div class="card">
+        <main class="projects">
 
-                <div class="card-icon">📚</div>
 
-                <h2>Lab 1</h2>
+            <!-- LAB 1 -->
+
+            <div class="card lab1">
+
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+
+                    <span class="project-number">
+                        LAB 01
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Book Hub
+                </h2>
+
 
                 <p>
-                    Book Information Website featuring a collection
-                    of books with detailed information for each book.
+                    Explore a collection of books with
+                    detailed information presented through
+                    a clean and responsive web interface.
                 </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                </div>
+
 
                 <a
                     href="./LAB%201/Book-Information-Website/index.html"
                     class="btn">
-                    Open Lab 1
+
+                    Open Project
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </a>
 
             </div>
 
 
-            <!-- Lab 2 -->
-            <div class="card">
+            <!-- LAB 2 -->
 
-                <div class="card-icon">📦</div>
+            <div class="card lab2">
 
-                <h2>Lab 2</h2>
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        📦
+                    </div>
+
+
+                    <span class="project-number">
+                        LAB 02
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Product Inventory Hub
+                </h2>
+
 
                 <p>
-                    Product Inventory Hub with an interactive dashboard
-                    for viewing and managing product information.
+                    An interactive inventory dashboard designed
+                    to view, manage, add, edit and delete product
+                    information efficiently.
                 </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                </div>
+
 
                 <a
                     href="./LAB%202/Product-Inventory-Hub/index.html"
                     class="btn">
-                    Open Lab 2
+
+                    Open Project
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </a>
 
             </div>
 
 
-            <!-- Rock Paper Scissors -->
-            <div class="card">
+            <!-- ROCK PAPER SCISSORS -->
 
-                <div class="card-icon">🎮</div>
+            <div class="card game">
 
-                <h2>Rock Paper Scissors</h2>
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        🎮
+                    </div>
+
+
+                    <span class="project-number">
+                        GAME
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Rock Paper Scissors
+                </h2>
+
 
                 <p>
-                    An interactive Rock Paper Scissors game built
-                    using HTML, CSS and JavaScript.
+                    A fun interactive game where you compete
+                    against the computer using Rock, Paper
+                    and Scissors.
                 </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        HTML
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                </div>
+
 
                 <a
                     href="./ROCK-PAPER-SCISSORS/index.html"
-                    class="btn game-btn">
+                    class="btn">
+
                     Play Game
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </a>
 
             </div>
 
-        </div>
+
+        </main>
 
 
-        <!-- Footer -->
+        <!-- FOOTER -->
+
         <footer>
-            © 2026 Web Programming Projects
+
+            © 2026
+
+            <span>
+                Web Programming Projects
+            </span>
+
+            • Built with HTML, CSS & JavaScript
+
         </footer>
+
 
     </div>
 
