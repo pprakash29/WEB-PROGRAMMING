@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capital Finder | Global Capital Explorer</title>
+    <meta name="description" content="Explore 195 countries and discover their capitals around the world.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#explore" aria-label="Country Capital Finder home">
+            <span class="brand-mark" aria-hidden="true">🌍</span>
+            <span>
+                <strong>Country Capital Finder</strong>
+                <small>Global Capital Explorer</small>
+            </span>
+        </a>
+        <a class="header-favorites" href="#favoritesSection" aria-label="View favorite countries">
+            ⭐ Favorites <span id="favoriteCount" class="nav-count">0</span>
+        </a>
+    </header>
+
+    <main>
+        <section class="hero" id="explore">
+            <div class="hero-map" aria-hidden="true">
+                <span class="map-dot dot-one"></span><span class="map-dot dot-two"></span>
+                <span class="map-dot dot-three"></span><span class="map-dot dot-four"></span>
+            </div>
+            <div class="hero-copy">
+                <p class="eyebrow">YOUR PASSPORT TO THE WORLD</p>
+                <h1>Find the story behind<br><span>every capital.</span></h1>
+                <p class="hero-subtitle">Explore countries and discover their capitals around the world.</p>
+                <a class="hero-link" href="#explorerPanel">Start exploring <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-orbit" aria-hidden="true"><span>✦</span><span>◎</span><span>✧</span></div>
+        </section>
+
+        <section class="stats-row" aria-label="Explorer statistics">
+            <div class="stat-item"><strong data-count="195">0</strong><span>Countries</span></div>
+            <div class="stat-item"><strong data-count="7">0</strong><span>Continents</span></div>
+            <div class="stat-item"><strong>🌍</strong><span>Global Explorer</span></div>
+        </section>
+
+        <section class="explorer-panel" id="explorerPanel">
+            <div class="section-heading">
+                <div><p class="eyebrow">DISCOVER A DESTINATION</p><h2>Where will you go today?</h2></div>
+                <span id="resultCount" class="result-count">195 countries</span>
+            </div>
+            <div class="search-controls">
+                <div class="search-field">
+                    <label for="searchInput">Search for a country</label>
+                    <span class="search-symbol" aria-hidden="true">⌕</span>
+                    <input id="searchInput" type="search" placeholder="Search for a country..." autocomplete="off" aria-controls="countrySuggestions">
+                    <button type="button" id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
+                </div>
+                <div class="select-field">
+                    <label for="country">Choose from all countries</label>
+                    <select id="country" onchange="showCapital()" aria-label="Choose a country">
+                        <option value="">-- Select a country --</option>
+                    </select>
+                </div>
+                <button type="button" id="randomBtn" class="primary-button">🎲 Explore Random Country</button>
+            </div>
+            <div id="countrySuggestions" class="suggestions" role="listbox" aria-label="Matching countries"></div>
+            <div class="continent-header"><span>Explore by Continent</span><small id="activeFilterLabel">All countries</small></div>
+            <div class="continent-filters" role="group" aria-label="Filter by continent">
+                <button type="button" class="continent-pill active" data-continent="All">All <span>195</span></button>
+                <button type="button" class="continent-pill" data-continent="Asia">Asia <span>48</span></button>
+                <button type="button" class="continent-pill" data-continent="Europe">Europe <span>44</span></button>
+                <button type="button" class="continent-pill" data-continent="Africa">Africa <span>54</span></button>
+                <button type="button" class="continent-pill" data-continent="North America">North America</button>
+                <button type="button" class="continent-pill" data-continent="South America">South America</button>
+                <button type="button" class="continent-pill" data-continent="Oceania">Oceania <span>14</span></button>
+            </div>
+        </section>
+
+        <section id="capital" class="legacy-output" role="status" aria-live="polite"></section>
+
+        <section id="countryCard" class="country-card hidden" aria-live="polite" aria-atomic="true">
+            <div class="card-top">
+                <div class="country-identity"><div id="cardFlag" class="country-flag"></div><div><p class="card-kicker">COUNTRY PROFILE</p><h2 id="cardCountryName"></h2><span id="cardContinentBadge" class="region-badge"></span></div></div>
+                <button id="favoriteBtn" type="button" class="favorite-button" aria-pressed="false">☆ <span>Favorite</span></button>
+            </div>
+            <div class="capital-feature"><span>CAPITAL CITY</span><strong id="cardCapital"></strong></div>
+            <div class="details-grid">
+                <div><span>Country code</span><strong id="cardCode">—</strong></div>
+                <div><span>Currency</span><strong id="cardCurrency">—</strong></div>
+                <div><span>Population</span><strong id="cardPopulation">—</strong></div>
+            </div>
+            <div class="fact-box"><span aria-hidden="true">✦</span><p><strong>Did you know?</strong><br><span id="cardFact"></span></p></div>
+            <div class="card-actions"><a id="cardMapsLink" class="text-link" target="_blank" rel="noopener">View on map ↗</a></div>
+        </section>
+
+        <section class="lower-grid">
+            <div class="list-panel" id="recentSection"><div class="panel-heading"><div><p class="eyebrow">YOUR JOURNEY</p><h2>Recently Explored</h2></div><span class="panel-icon">↗</span></div><div id="recentList" class="country-list"><p class="empty-list">Your discoveries will appear here.</p></div></div>
+            <div class="list-panel" id="favoritesSection"><div class="panel-heading"><div><p class="eyebrow">SAVED PLACES</p><h2>Favorite Countries</h2></div><span class="panel-icon">☆</span></div><div id="favoritesList" class="country-list"><p class="empty-list">Save a country to build your list.</p></div></div>
+        </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+</body>
+</html>

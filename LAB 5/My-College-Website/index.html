@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCollege - JAIN (Deemed-to-be University)</title>
+  <meta name="description"
+    content="MyCollege — Academic Portal for JAIN (Deemed-to-be University), Bengaluru. Programmes, research, examinations, and campus life.">
+
+  <!-- Google Fonts: Academic serif & clean sans body, plus distinctive typefaces for course typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Work+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=IBM+Plex+Mono:wght@500;600&family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=Cinzel:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome for academic and navigation icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root { --header-h: 68px; --marquee-h: 36px; }
+    .site-header { height: 68px; box-shadow: 0 4px 16px rgba(23, 47, 99, 0.14); }
+    .navbar {
+      width: calc(100% - 96px);
+      max-width: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 12px;
+    }
+    .brand { justify-self: start; }
+    .nav-links {
+      justify-self: center;
+      gap: 8px;
+    }
+    .nav-actions { justify-self: end; }
+    .brand { gap: 12px; }
+    .brand-crest { width: 40px; height: 40px; }
+    .nav-link {
+      padding: 7px 13px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .nav-link.active { padding: 8px 15px; }
+    .nav-badge-link { padding: 6px 11px; font-size: 0.76rem; border-radius: 6px; }
+    .marquee-bar { height: 36px; border-bottom: 0; }
+    .marquee-pill { padding: 0 17px; box-shadow: none; border-right: 0; }
+    .marquee-viewport { min-width: 0; flex: 1; overflow: hidden; }
+    .marquee-track { width: max-content; gap: 36px; padding-left: 28px; animation: marquee-scroll 28s linear infinite; }
+    .marquee-item { gap: 8px; font-size: 0.82rem; }
+    @media (max-width: 860px) {
+      .navbar {
+        width: calc(100% - 48px);
+        padding: 0;
+        display: flex;
+        gap: 12px;
+      }
+      .nav-links { gap: 6px; }
+      .nav-link { padding: 10px 18px; }
+      .nav-link.active { padding: 10px 18px; }
+    }
+    .hero { min-height: 680px; height: min(680px, calc(100vh - var(--header-h) - var(--marquee-h))); background: #10244D; }
+    .hero-bg { background-position: center center; filter: none; animation: none; }
+    .hero-overlay { background: linear-gradient(rgba(16, 36, 77, 0.30), rgba(16, 36, 77, 0.42)); }
+    .hero-content { max-width: 920px; padding: 56px 24px 78px; }
+    .hero-crest-badge { background: rgba(79,119,235,0.60); border: 1px solid rgba(255,255,255,0.30); color: #E8EDFF; margin-bottom: 28px; }
+    .hero-title { font-size: clamp(4.5rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: 0.06em; line-height: 0.95; text-shadow: none; margin-bottom: 12px; }
+    .hero-title-sub { font-size: clamp(1.2rem, 2.4vw, 1.65rem); color: #F6F8FF; }
+    .hero-subtitle { max-width: 560px; margin: 24px auto 30px; color: #E8EDFF; font-size: clamp(0.98rem, 1.8vw, 1.12rem); }
+    .hero-cta { gap: 14px; margin-bottom: 42px; }
+    .hero-cta .btn { min-width: 178px; min-height: 46px; border-radius: 6px; box-shadow: none; }
+    .hero-stats-row { width: min(100%, 650px); max-width: 650px; padding: 13px 18px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); border-radius: 8px; backdrop-filter: blur(8px); }
+    .hero-stat-num { font-size: 1rem; }
+    .hero-stat-label { color: #DDF3FC; font-size: 0.64rem; }
+    .hero-stat-divider { background: rgba(255,255,255,0.25); }
+    .scroll-cue { bottom: 36px; color: rgba(255,255,255,0.75); }
+    @media (max-width: 640px) {
+      .marquee-pill { padding: 0 12px; font-size: 0.68rem; }
+      .marquee-track { gap: 24px; padding-left: 18px; animation-duration: 22s; }
+      .hero { min-height: 680px; height: auto; }
+      .hero-content { padding: 48px 20px 92px; }
+      .hero-title { font-size: clamp(3.4rem, 17vw, 5rem); }
+      .hero-cta { margin-bottom: 34px; }
+      .hero-stats-row { gap: 8px; padding: 12px 8px; }
+    }
+    /* Subtle premium blue glow states */
+    .nav-link.active { box-shadow: inset 0 -2px 0 #4F77EB, 0 4px 14px rgba(79, 119, 235, 0.20); }
+    .nav-badge-link { transition: box-shadow 240ms ease, background 240ms ease, border-color 240ms ease, color 240ms ease; box-shadow: none; }
+    .nav-badge-link:hover { box-shadow: 0 6px 20px rgba(79,119,235,0.28); }
+    .hero-cta .btn-primary { box-shadow: 0 6px 18px rgba(79,119,235,0.25); }
+    .hero-cta .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 9px 25px rgba(79,119,235,0.35); }
+    .hero-crest-badge { box-shadow: 0 4px 18px rgba(79,119,235,0.20); }
+    .hero-stats-row { box-shadow: 0 8px 30px rgba(16,36,77,0.18); }
+    .highlight-card, .event-card, .calendar-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .highlight-card:hover, .event-card:hover, .calendar-card:hover { transform: translateY(-4px); border-color: #7596F2; box-shadow: 0 14px 35px rgba(79,119,235,0.16); }
+    .highlight-card .highlight-icon-box, .event-card .event-date, .campus-feature-item .feature-icon, .course-card .course-icon { filter: drop-shadow(0 0 4px rgba(79,119,235,0.20)); }
+    .highlight-card:hover .highlight-icon-box, .event-card:hover .event-date, .campus-feature-item:hover .feature-icon, .course-card:hover .course-icon, .course-card:hover .course-details-btn i, .highlight-card:hover .highlight-explore i, .event-card:hover .event-more i, .footer-links a:hover i { filter: drop-shadow(0 0 7px rgba(79,119,235,0.35)); }
+    .section-kicker::before, .section-kicker::after, .highlights-section .section-kicker::before, .highlights-section .section-kicker::after { filter: drop-shadow(0 0 4px rgba(79,119,235,0.20)); }
+    .footer-links a:hover { text-shadow: 0 0 8px rgba(79,119,235,0.20); }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-cta .btn-primary:hover, .highlight-card:hover, .event-card:hover, .calendar-card:hover { transform: none; }
+    }
+
+    /* Premium light-blue visual system */
+    :root {
+      --background: #f4f9ff;
+      --surface: #ffffff;
+      --surface-soft: #eaf4ff;
+      --text: #14213d;
+      --text-light: #49627a;
+      --muted: #6c8296;
+      --border: #d6e5f2;
+      --primary: #1769aa;
+      --primary-dark: #0d3b66;
+      --primary-light: #4ba3df;
+      --accent: #28a9df;
+      --accent-light: #dff4ff;
+      --navy: #0d3b66;
+      --navy-dark: #082b4c;
+      --paper: #f4f9ff;
+      --paper-card: #ffffff;
+      --paper-soft: #eaf4ff;
+      --paper-accent: #d6e5f2;
+      --ink: #14213d;
+      --ink-muted: #49627a;
+      --ink-light: #6c8296;
+      --wine: #1769aa;
+      --wine-deep: #0d3b66;
+      --wine-light: #4ba3df;
+      --gold: #28a9df;
+      --gold-light: #dff4ff;
+      --shadow-sm: 0 5px 18px rgba(13, 59, 102, 0.07);
+      --shadow-md: 0 16px 34px rgba(13, 59, 102, 0.12);
+      --shadow-lg: 0 24px 60px rgba(13, 59, 102, 0.16);
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+    }
+
+    .site-header {
+      background: linear-gradient(105deg, #082b4c 0%, #0d3b66 58%, #12548a 100%);
+      border-bottom-color: rgba(143, 213, 246, 0.22);
+    }
+
+    .brand-crest {
+      background: linear-gradient(145deg, #1769aa, #0d3b66);
+      border-color: #65c7f0;
+      box-shadow: 0 5px 16px rgba(2, 27, 51, 0.28);
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      transition: color 220ms ease, background 220ms ease, transform 220ms ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background: rgba(111, 202, 241, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: rgba(75, 163, 223, 0.22);
+      box-shadow: inset 0 -2px 0 #75d0f3, 0 5px 16px rgba(2, 27, 51, 0.18);
+    }
+
+    .nav-badge-link {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(191, 231, 247, 0.72);
+      box-shadow: 0 4px 14px rgba(2, 27, 51, 0.14);
+    }
+
+    .nav-badge-link:hover {
+      background: linear-gradient(135deg, #4ba3df, #1769aa);
+      border-color: #75d0f3;
+      box-shadow: 0 8px 22px rgba(40, 169, 223, 0.28);
+    }
+
+    .marquee-bar {
+      background: linear-gradient(90deg, #e5f4ff, #f8fcff 55%, #eaf6ff);
+      border-bottom-color: #c8e3f4;
+    }
+
+    .marquee-pill {
+      background: linear-gradient(135deg, #1769aa, #0d3b66);
+      border-right-color: #4ba3df;
+      box-shadow: 5px 0 16px rgba(13, 59, 102, 0.16);
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(8, 43, 76, 0.52) 0%, rgba(13, 59, 102, 0.2) 52%, rgba(13, 59, 102, 0.06) 100%),
+        linear-gradient(180deg, rgba(8, 43, 76, 0.08) 0%, rgba(8, 43, 76, 0.04) 54%, rgba(8, 43, 76, 0.42) 100%);
+    }
+
+    .hero-crest-badge {
+      background: rgba(13, 59, 102, 0.62);
+      border-color: rgba(191, 231, 247, 0.72);
+      box-shadow: 0 7px 22px rgba(2, 27, 51, 0.2);
+    }
+
+    .hero-title {
+      text-shadow: 0 5px 24px rgba(2, 27, 51, 0.28);
+    }
+
+    .hero-stats-row {
+      background: rgba(8, 43, 76, 0.56);
+      border-color: rgba(223, 244, 255, 0.34);
+      box-shadow: 0 12px 30px rgba(2, 27, 51, 0.2);
+    }
+
+    .btn-primary,
+    .filter-btn.active,
+    .back-to-top {
+      background: linear-gradient(135deg, #28a9df, #1769aa);
+      border-color: #4ba3df;
+      box-shadow: 0 9px 22px rgba(23, 105, 170, 0.24);
+    }
+
+    .btn-primary:hover,
+    .filter-btn.active:hover,
+    .back-to-top:hover {
+      background: linear-gradient(135deg, #4ba3df, #0d3b66);
+      box-shadow: 0 13px 28px rgba(23, 105, 170, 0.3);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 6px 18px rgba(2, 27, 51, 0.12);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--primary-dark);
+      border-color: #ffffff;
+    }
+
+    .courses-section,
+    .campus-section {
+      background: linear-gradient(180deg, #f8fcff 0%, #eef7ff 100%);
+    }
+
+    .highlights-section,
+    .events-section {
+      background: linear-gradient(180deg, #eaf4ff 0%, #f4faff 100%);
+    }
+
+    .section-head h2,
+    .highlight-card h3,
+    .event-card h3,
+    .feature-text h4 {
+      color: var(--navy);
+    }
+
+    .section-lead,
+    .course-desc {
+      color: var(--text-light);
+    }
+
+    .course-card,
+    .highlight-card,
+    .event-card,
+    .campus-feature-item,
+    .calendar-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+    }
+
+    .course-card:hover,
+    .highlight-card:hover,
+    .event-card:hover,
+    .campus-feature-item:hover,
+    .calendar-card:hover {
+      border-color: #8cc8eb;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .highlight-icon-box,
+    .feature-icon,
+    .course-icon,
+    .course-num {
+      background: var(--accent-light);
+      color: var(--primary);
+    }
+
+    .course-card:hover .course-icon,
+    .highlight-card:hover .highlight-icon-box {
+      background: linear-gradient(135deg, #28a9df, #1769aa);
+      color: #ffffff;
+    }
+
+    .filter-bar,
+    .course-search-box input {
+      background: rgba(255, 255, 255, 0.88);
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-btn:hover {
+      color: var(--primary-dark);
+      background: var(--accent-light);
+    }
+
+    .course-search-box input:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(40, 169, 223, 0.16), var(--shadow-sm);
+    }
+
+    .card-footer {
+      border-top-color: #e1edf6;
+    }
+
+    .course-details-btn,
+    .event-more,
+    .highlight-explore {
+      color: var(--primary);
+      transition: color 220ms ease, gap 220ms ease;
+    }
+
+    .course-details-btn:hover,
+    .event-more:hover,
+    .highlight-explore:hover {
+      color: var(--primary-dark);
+    }
+
+    .site-footer {
+      background: linear-gradient(135deg, #082b4c 0%, #0d3b66 68%, #12548a 100%);
+      border-top-color: #4ba3df;
+    }
+
+    .footer-bottom {
+      background: rgba(2, 27, 51, 0.22);
+      border-top-color: rgba(191, 231, 247, 0.2);
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        background: #0d3b66;
+        box-shadow: 0 16px 36px rgba(8, 43, 76, 0.28);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav-link,
+      .course-card,
+      .highlight-card,
+      .event-card,
+      .campus-feature-item,
+      .calendar-card {
+        transition: none;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ============ SKIP LINK (Accessibility) ============ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <a href="#home" class="brand">
+       <div class="brand-crest">
+          <img src="assets/images/jgi-logo.png" alt="JGi Logo">
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-primary">MyCollege</span>
+          <span class="brand-secondary">JAIN (Deemed-to-be University)</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#courses" class="nav-link" data-section="courses">Courses</a></li>
+        <li><a href="#highlights" class="nav-link" data-section="highlights">Highlights</a></li>
+        <li><a href="#campus" class="nav-link" data-section="campus">Campus</a></li>
+        <li><a href="#events" class="nav-link" data-section="events">Events</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#courses" class="nav-badge-link">
+          <span class="pulse-dot"></span> Admissions 2026–27
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ SCROLLING ANNOUNCEMENT BAR (Requirement 5) ============ -->
+  <div class="marquee-bar" role="region" aria-label="Academic Announcements">
+    <div class="marquee-pill">
+      <i class="fa-solid fa-bullhorn"></i> IMPORTANT ACADEMIC UPDATE
+    </div>
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="marquee-track">
+      <span class="marquee-item"><i class="fa-solid fa-bell"></i> <strong>IA 1 Examination — 21 September
+        2026</strong></span>
+      <span class="marquee-item"><i class="fa-solid fa-graduation-cap"></i> <strong>Semester Examination — 4 December
+          2026</strong></span>
+      <span class="marquee-item"><i class="fa-solid fa-calendar-check"></i> <strong>INFINITY — 22–30 April
+          2027</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============ HERO (Requirements 2 & 3) ============ -->
+    <section class="hero" id="home">
+      <div class="hero-bg" style="background-image: url('assets/images/jgi-center-for-emerging-technologies.jpg');">
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="hero-crest-badge">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>NAAC A++ Accredited &bull; Graded Autonomy</span>
+        </div>
+
+        <!-- Requirement 3: University Name in Large Text followed by Address in Smaller Text -->
+        <h1 class="hero-title">
+          JAIN
+          <span class="hero-title-sub">(Deemed-to-be University)</span>
+        </h1>
+
+    
+        <p class="hero-subtitle">
+          Empowering Minds Through Academic Rigour, Practical Innovation and Global Research
+        </p>
+
+        <div class="hero-cta">
+          <a href="#courses" class="btn btn-primary">
+            <span>Explore Programmes</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#campus" class="btn btn-ghost">
+            <span>View University</span>
+            <i class="fa-solid fa-building-columns"></i>
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">NAAC A++</span>
+            <span class="hero-stat-label">Accreditation</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">10+</span>
+            <span class="hero-stat-label">Research Centres</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">UG &bull; PG &bull; Ph.D</span>
+            <span class="hero-stat-label">Programmes</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">Bengaluru</span>
+            <span class="hero-stat-label">Karnataka, India</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="scroll-cue" id="scroll-cue" aria-label="Scroll to programmes section">
+        <span class="scroll-cue-text">Scroll to explore</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </section>
+
+    <!-- ============ COURSES SECTION (Requirement 4) ============ -->
+    <section class="section courses-section" id="courses">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Academic Portfolio</span>
+          <h2>Courses &amp; Programmes</h2>
+          <p class="section-lead">
+            Explore undergraduate, postgraduate, and doctoral programmes offered across university faculties, designed
+            to foster academic excellence, interdisciplinary research, and professional leadership.
+          </p>
+        </div>
+
+        <!-- Controls: Segmented Filter Tabs + Instant Course Search -->
+        <div class="courses-toolbar">
+          <div class="filter-bar" role="tablist" aria-label="Filter courses by level">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <span>ALL</span>
+            </button>
+            <button class="filter-btn" data-filter="ug" role="tab" aria-selected="false">
+              <span>UNDERGRADUATE</span>
+            </button>
+            <button class="filter-btn" data-filter="pg" role="tab" aria-selected="false">
+              <span>POSTGRADUATE</span>
+            </button>
+            <button class="filter-btn" data-filter="research" role="tab" aria-selected="false">
+              <span>RESEARCH</span>
+            </button>
+          </div>
+
+          <div class="course-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="course-search" placeholder="Search programmes by title, department, or degree..."
+              aria-label="Search programmes">
+            <button id="course-search-clear" class="search-clear-btn" aria-label="Clear search" style="display: none;">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="no-courses-found" class="no-courses-found" style="display: none;">
+          <div class="no-courses-icon"><i class="fa-regular fa-folder-open"></i></div>
+          <h3>No matching programmes found</h3>
+          <p>Try searching for a different keyword or reset your filter tabs.</p>
+          <button id="reset-filter-btn" class="btn btn-sm btn-ghost-dark">Reset Filter &amp; Search</button>
+        </div>
+
+        <!-- Course Cards Grid -->
+        <div class="course-grid" id="course-grid">
+
+          <!-- ================= UG PROGRAMMES ================= -->
+          <article class="course-card" data-category="ug" data-degree="B.Tech"
+            data-school="Faculty of Engineering &amp; Technology" data-level="Undergraduate">
+            <div class="card-accent-line style-1-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">01</span>
+              <div class="course-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            </div>
+            <span class="course-tag">B.Tech &bull; Faculty of Engineering &amp; Technology</span>
+            <h3 class="course-name course-style-1">Computer Science &amp; Engineering</h3>
+            <p class="course-desc">Core software, systems and engineering foundations with specialisation tracks such as
+              AI &amp; ML, Cyber Security and Data Science.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="cse-btech">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BBA (Honours)" data-school="School of Management"
+            data-level="Undergraduate">
+            <div class="card-accent-line style-2-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">02</span>
+              <div class="course-icon"><i class="fa-solid fa-chart-line"></i></div>
+            </div>
+            <span class="course-tag">BBA (Honours) &bull; School of Management</span>
+            <h3 class="course-name course-style-2">Digital Business</h3>
+            <p class="course-desc">A modern management degree focused on e-commerce, digital marketing, product growth
+              and platform-driven business models.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bba-digital">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BCom (Honours)" data-school="School of Commerce"
+            data-level="Undergraduate">
+            <div class="card-accent-line style-3-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">03</span>
+              <div class="course-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            </div>
+            <span class="course-tag">BCom (Honours) &bull; School of Commerce</span>
+            <h3 class="course-name course-style-3">International Finance &amp; Accounting <em>with ACCA-UK</em></h3>
+            <p class="course-desc">Commerce degree integrated with the Association of Chartered Certified Accountants
+              (ACCA), UK qualification pathway.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bcom-acca">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BA (Professional)"
+            data-school="School of Humanities &amp; Social Sciences" data-level="Undergraduate">
+            <div class="card-accent-line style-4-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">04</span>
+              <div class="course-icon"><i class="fa-solid fa-newspaper"></i></div>
+            </div>
+            <span class="course-tag">BA (Professional) &bull; School of Humanities</span>
+            <h3 class="course-name course-style-4">Journalism and Mass Communication</h3>
+            <p class="course-desc">Reporting, media production, digital journalism and communication studies for
+              aspiring broadcasters and media strategists.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="ba-journalism">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BSc (Honours)" data-school="School of Sciences"
+            data-level="Undergraduate">
+            <div class="card-accent-line style-5-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">05</span>
+              <div class="course-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            </div>
+            <span class="course-tag">BSc (Honours) &bull; School of Sciences</span>
+            <h3 class="course-name course-style-5">Data Science &amp; Analytics</h3>
+            <p class="course-desc">Statistics, mathematical modeling, programming foundations and analytics with
+              interdisciplinary minors.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bsc-data-science">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BCA (Honours)"
+            data-school="School of Computer Science &amp; IT" data-level="Undergraduate">
+            <div class="card-accent-line style-6-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">06</span>
+              <div class="course-icon"><i class="fa-solid fa-robot"></i></div>
+            </div>
+            <span class="course-tag">BCA (Honours) &bull; School of Computer Science &amp; IT</span>
+            <h3 class="course-name course-style-6">Artificial Intelligence &amp; Machine Learning</h3>
+            <p class="course-desc">Application-focused computing degree covering practical AI algorithms, deep learning
+              pipelines and intelligent software design.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bca-aiml">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="B.Design"
+            data-school="School of Design, Media &amp; Creative Arts" data-level="Undergraduate">
+            <div class="card-accent-line style-7-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">07</span>
+              <div class="course-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            </div>
+            <span class="course-tag">B.Design &bull; School of Design, Media &amp; Arts</span>
+            <h3 class="course-name course-style-7">Communication Design</h3>
+            <p class="course-desc">Visual narrative craft, user experience design, branding systems and multimedia
+              communication across digital landscapes.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bdes-comm">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="ug" data-degree="BBA.LLB (Hons.)" data-school="School of Law"
+            data-level="Undergraduate">
+            <div class="card-accent-line style-8-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">08</span>
+              <div class="course-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            </div>
+            <span class="course-tag">BBA.LLB (Hons.) &bull; School of Law</span>
+            <h3 class="course-name course-style-8">BBA.LLB <em>(Honours)</em></h3>
+            <p class="course-desc">A comprehensive five-year integrated law degree harmonising commercial corporate
+              management with robust jurisprudence.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="bballb">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- ================= PG PROGRAMMES ================= -->
+          <article class="course-card" data-category="pg" data-degree="M.Tech"
+            data-school="Faculty of Engineering &amp; Technology" data-level="Postgraduate">
+            <div class="card-accent-line style-3-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">09</span>
+              <div class="course-icon"><i class="fa-solid fa-microchip"></i></div>
+            </div>
+            <span class="course-tag">M.Tech &bull; Faculty of Engineering &amp; Technology</span>
+            <h3 class="course-name course-style-3">Artificial Intelligence</h3>
+            <p class="course-desc">Advanced postgraduate engineering study in autonomous AI architectures, computer
+              vision, NLP and high-performance deployment.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="mtech-ai">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="MBA" data-school="School of Management"
+            data-level="Postgraduate">
+            <div class="card-accent-line style-6-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">10</span>
+              <div class="course-icon"><i class="fa-solid fa-briefcase"></i></div>
+            </div>
+            <span class="course-tag">MBA &bull; School of Management</span>
+            <h3 class="course-name course-style-6">Business Analytics</h3>
+            <p class="course-desc">A prestigious postgraduate management curriculum preparing strategic leaders in
+              predictive modelling and data-driven governance.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="mba-analytics">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="MCom (Integrated)"
+            data-school="School of Commerce" data-level="Postgraduate">
+            <div class="card-accent-line style-1-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">11</span>
+              <div class="course-icon"><i class="fa-solid fa-coins"></i></div>
+            </div>
+            <span class="course-tag">MCom Industry Integrated &bull; School of Commerce</span>
+            <h3 class="course-name course-style-1">Financial Analysis <em>with EY</em></h3>
+            <p class="course-desc">Postgraduate commerce programme conducted in direct technical collaboration with
+              Ernst &amp; Young (EY) professional mentors.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="mcom-ey">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="MA"
+            data-school="School of Humanities &amp; Social Sciences" data-level="Postgraduate">
+            <div class="card-accent-line style-4-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">12</span>
+              <div class="course-icon"><i class="fa-solid fa-video"></i></div>
+            </div>
+            <span class="course-tag">MA &bull; School of Humanities &amp; Social Sciences</span>
+            <h3 class="course-name course-style-4">Journalism and Mass Communication</h3>
+            <p class="course-desc">Rigorous master's study investigating critical media theories, investigative
+              reporting, digital production and media ethics.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="ma-journalism">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="MSc" data-school="School of Sciences"
+            data-level="Postgraduate">
+            <div class="card-accent-line style-5-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">13</span>
+              <div class="course-icon"><i class="fa-solid fa-database"></i></div>
+            </div>
+            <span class="course-tag">MSc &bull; School of Sciences</span>
+            <h3 class="course-name course-style-5">Data Science and Analytics</h3>
+            <p class="course-desc">Postgraduate science discipline covering advanced stochastic processes, machine
+              learning theory, neural systems and big data computing.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="msc-data-science">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="MCA"
+            data-school="School of Computer Science &amp; IT" data-level="Postgraduate">
+            <div class="card-accent-line style-2-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">14</span>
+              <div class="course-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+            <span class="course-tag">MCA Specialisation &bull; School of Computer Science &amp; IT</span>
+            <h3 class="course-name course-style-2">Artificial Intelligence &amp; Machine Learning</h3>
+            <p class="course-desc">Enterprise software and systems architecture infused with deep learning, natural
+              language processing and computer vision frameworks.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="mca-aiml">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="pg" data-degree="LL.M." data-school="School of Law"
+            data-level="Postgraduate">
+            <div class="card-accent-line style-8-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">15</span>
+              <div class="course-icon"><i class="fa-solid fa-gavel"></i></div>
+            </div>
+            <span class="course-tag">LL.M. &bull; School of Law</span>
+            <h3 class="course-name course-style-8">Master of Laws <em>(LL.M.)</em></h3>
+            <p class="course-desc">Advanced postgraduate jurisprudence offering specialised research in international
+              corporate law, intellectual property and constitutional dispute.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="llm">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- ================= RESEARCH / DOCTORAL ================= -->
+          <article class="course-card" data-category="research" data-degree="Ph.D."
+            data-school="Faculty of Engineering &amp; Technology" data-level="Research">
+            <div class="card-accent-line style-7-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">16</span>
+              <div class="course-icon"><i class="fa-solid fa-flask"></i></div>
+            </div>
+            <span class="course-tag">Doctoral Research &bull; Engineering &amp; Technology</span>
+            <h3 class="course-name course-style-7">Ph.D. in Engineering &amp; Technology</h3>
+            <p class="course-desc">Full-time and part-time doctoral investigations into breakthrough computing,
+              sustainable electronics and advanced material engineering.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="phd-engg">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="research" data-degree="Ph.D."
+            data-school="School of Management &amp; Commerce" data-level="Research">
+            <div class="card-accent-line style-1-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">17</span>
+              <div class="course-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            </div>
+            <span class="course-tag">Doctoral Research &bull; Management &amp; Commerce</span>
+            <h3 class="course-name course-style-1">Ph.D. in Management &amp; Commerce</h3>
+            <p class="course-desc">Original scholarly doctoral inquiries investigating global commerce dynamics,
+              organizational strategy, econometrics and fintech innovation.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="phd-mgmt">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="research" data-degree="Ph.D."
+            data-school="School of Sciences &amp; Humanities" data-level="Research">
+            <div class="card-accent-line style-5-accent"></div>
+            <div class="card-header-row">
+              <span class="course-num">18</span>
+              <div class="course-icon"><i class="fa-solid fa-atom"></i></div>
+            </div>
+            <span class="course-tag">Doctoral Research &bull; Sciences &amp; Humanities</span>
+            <h3 class="course-name course-style-5">Ph.D. in Sciences &amp; Humanities</h3>
+            <p class="course-desc">Doctoral dissertations spanning pure sciences, environmental biology, cognitive
+              studies, developmental linguistics and social sciences.</p>
+            <div class="card-footer">
+              <button class="course-details-btn" data-course="phd-sci">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HIGHLIGHTS SECTION ============ -->
+    <section class="section highlights-section" id="highlights">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="section-kicker">Institutional Benchmarks</span>
+          <h2>University Highlights</h2>
+          <p class="section-lead">
+            Distinguishing pillars that characterize JAIN (Deemed-to-be University), supported by recognized
+            accreditations and active industry linkages.
+          </p>
+        </div>
+
+        <div class="highlights-grid">
+          <article class="highlight-card" data-highlight="academic-excellence">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-award"></i></div>
+              <span class="highlight-badge">Recognised Excellence</span>
+              <h3>Academic Excellence</h3>
+              <p>Conferred Graded Autonomy by the UGC and awarded an 'A++' Grade accreditation by NAAC, affirming sustained scholastic quality.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="research-innovation">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-flask-vial"></i></div>
+              <span class="highlight-badge">Pioneering Inquiry</span>
+              <h3>Research &amp; Innovation</h3>
+              <p>Home to over 10 specialized interdisciplinary research centers and extensive patent filings, encouraging student and faculty discoveries.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="placements">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+              <span class="highlight-badge">Placement Highlights</span>
+              <h3>Placements</h3>
+              <p class="placement-inline-stats"><strong>7,065 students placed</strong> &bull; 2025–26 Talent Pool<br><strong>98.01% B.Tech placement</strong> &bull; ₹8.23 LPA average CTC<br><strong>₹60 LPA highest CTC</strong> &bull; B.Tech 2026</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="career-outcomes">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+              <span class="highlight-badge">Professional Growth</span>
+              <h3>Career Outcomes</h3>
+              <p>Programme learning, projects and career preparation help students build practical confidence for the next stage of their professional journey.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="industry-connect">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-handshake"></i></div>
+              <span class="highlight-badge">Corporate Linkages</span>
+              <h3>Industry Connect</h3>
+              <p>Industry-connected learning brings professional perspectives into the student experience and keeps academic exploration close to the world of work.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="global-opportunities">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-earth-asia"></i></div>
+              <span class="highlight-badge">Worldwide Network</span>
+              <h3>Global Opportunities</h3>
+              <p>International university partnerships, dual-degree pathways, overseas faculty exchanges, and active global alumni networks.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="innovation-entrepreneurship">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+              <span class="highlight-badge">Future Makers</span>
+              <h3>Innovation &amp; Entrepreneurship</h3>
+              <p>A technology-oriented mindset gives students space to turn curiosity into thoughtful ideas, prototypes and ventures.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+          <article class="highlight-card" data-highlight="student-life">
+            <div class="card-content">
+              <div class="highlight-icon-box"><i class="fa-solid fa-people-group"></i></div>
+              <span class="highlight-badge">Vibrant Culture</span>
+              <h3>Student Life</h3>
+              <p>A thriving ecosystem with premier sporting amenities, diverse cultural societies, leadership conclaves, and supportive campus living.</p>
+              <div class="card-action"><button class="highlight-explore" type="button">Explore <i class="fa-solid fa-arrow-right"></i></button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAMPUS SECTION ============ -->
+    <section class="section campus-section" id="campus">
+      <div class="container campus-split">
+        <div class="campus-media">
+          <div class="campus-image-container">
+            <img src="assets/images/jgi-center-for-emerging-technologies.jpg"
+              alt="Illustration representing the university courtyard, clock tower, and student walkways"
+              class="campus-image">
+            <div class="campus-image-badge">
+              <i class="fa-solid fa-map-pin"></i>
+              <span>Jain Global Campus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="campus-details">
+          <span class="section-kicker">Campus Infrastructure</span>
+          <h2>Life at JAIN</h2>
+          <p class="campus-intro">
+            Located in the vibrant metropolis of Bengaluru, the university campuses blend state-of-the-art technological
+            infrastructure with collaborative learning spaces, libraries, and student courtyards.
+          </p>
+
+          <div class="campus-features-grid">
+            <div class="campus-feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+              <div class="feature-text">
+                <h4>Central &amp; School Libraries</h4>
+                <p>Extensive collections of physical volumes, digital journal repositories, and quiet research carrels.
+                </p>
+              </div>
+            </div>
+
+            <div class="campus-feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-microscope"></i></div>
+              <div class="feature-text">
+                <h4>Specialized Laboratories</h4>
+                <p>Advanced computing labs, design ateliers, engineering workshops, and science research suites.</p>
+              </div>
+            </div>
+
+            <div class="campus-feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-dumbbell"></i></div>
+              <div class="feature-text">
+                <h4>Sports &amp; Wellness</h4>
+                <p>Multi-sport arenas, gymnasium facilities, and coaching grounds producing national-level athletes.</p>
+              </div>
+            </div>
+
+            <div class="campus-feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-building-user"></i></div>
+              <div class="feature-text">
+                <h4>On-Campus Living</h4>
+                <p>Comfortable student accommodation, dining halls, medical facilities, and 24/7 campus security.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS SECTION ============ -->
+    <section class="section events-section" id="events">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="section-kicker">University Calendar</span>
+          <h2>Academic Schedules &amp; Notices</h2>
+          <p class="section-lead">
+            Official academic notifications, examination schedules, and institutional conferences for the 2026–27
+            academic year.
+          </p>
+        </div>
+
+        <div class="event-grid" id="event-grid">
+          <article class="event-card" data-event="ia1-exam">
+            <div class="event-date">
+              <span class="event-day">21</span>
+              <span class="event-month">Sep</span>
+            </div>
+            <div class="event-body">
+              <span class="event-type">Examinations</span>
+              <h3>IA 1 Examination</h3>
+              <p>First Internal Assessment (IA 1) examinations commence on 21 September 2026 across all undergraduate
+                and postgraduate programmes.</p>
+            </div>
+            <div class="event-action">
+              <button class="event-more" data-event-id="ia1-exam">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="event-card" data-event="sem-exam">
+            <div class="event-date">
+              <span class="event-day">04</span>
+              <span class="event-month">Dec</span>
+            </div>
+            <div class="event-body">
+              <span class="event-type">Examinations</span>
+              <h3>Semester Examination</h3>
+              <p>Semester-end examinations commence on 4 December 2026 across all university schools. Official hall
+                tickets and timetables available on portal.</p>
+            </div>
+            <div class="event-action">
+              <button class="event-more" data-event-id="sem-exam">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="event-card" data-event="infinity">
+            <div class="event-date">
+              <span class="event-day">22–30</span>
+              <span class="event-month">Apr 2027</span>
+            </div>
+            <div class="event-body">
+              <span class="event-type">The Annual Techno Program</span>
+              <h3>INFINITY</h3>
+              <p>An annual technology-focused programme celebrating innovation, creativity, problem-solving and student talent.</p>
+            </div>
+            <div class="event-action">
+              <button class="event-more" data-event-id="infinity">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ EVENT MODAL ============ -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+      <div class="modal-badge-group">
+        <span class="modal-tag" id="modal-tag">Academic Notice</span>
+        <span class="modal-level-pill"><i class="fa-solid fa-calendar-check"></i> Official Schedule</span>
+      </div>
+      <h3 id="modal-title">Event Title</h3>
+      <div class="modal-divider"></div>
+      <p id="modal-body" class="modal-text-content">Event details go here.</p>
+      <div class="modal-footer-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Detailed session timetables, room allotments, and instructions are accessible via the student
+          portal.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ UNIVERSITY HIGHLIGHT MODAL ============ -->
+  <div class="modal-overlay highlight-modal-overlay" id="highlight-modal-overlay" role="dialog" aria-modal="true"
+    aria-labelledby="highlight-modal-title" hidden>
+    <div class="modal-box highlight-modal-box" tabindex="-1">
+      <button class="modal-close" id="highlight-modal-close" type="button" aria-label="Close highlight details">&times;</button>
+      <span class="modal-tag" id="highlight-modal-category">University Highlight</span>
+      <h3 id="highlight-modal-title">Highlight Title</h3>
+      <p id="highlight-modal-description" class="modal-text-content"></p>
+
+      <div id="highlight-modal-statistics" class="highlight-statistics" hidden></div>
+
+      <div class="highlight-modal-section">
+        <h4 id="highlight-modal-points-heading">What You Can Explore</h4>
+        <ul id="highlight-modal-points"></ul>
+      </div>
+
+      <div class="highlight-modal-footer">
+        <button class="btn btn-primary" id="highlight-modal-done" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COURSE DETAILS MODAL (Structured & Polished) ============ -->
+  <div class="modal-overlay" id="course-modal-overlay" role="dialog" aria-modal="true"
+    aria-labelledby="course-modal-title" hidden>
+    <div class="modal-box modal-box-lg">
+      <button class="modal-close" id="course-modal-close" aria-label="Close dialog">&times;</button>
+
+      <div class="modal-badge-group">
+        <span class="modal-tag" id="course-modal-tag">Programme</span>
+        <span class="modal-level-pill" id="course-modal-level">Undergraduate</span>
+      </div>
+
+      <h3 id="course-modal-title" class="course-modal-heading">Programme Name</h3>
+
+      <!-- Structured Info Cards -->
+      <div class="modal-spec-grid">
+        <div class="spec-card">
+          <span class="spec-label"><i class="fa-solid fa-graduation-cap"></i> Degree</span>
+          <span class="spec-value" id="course-modal-degree">B.Tech</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-label"><i class="fa-solid fa-building-columns"></i> Faculty / School</span>
+          <span class="spec-value" id="course-modal-school">Faculty of Engineering &amp; Technology</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-label"><i class="fa-solid fa-layer-group"></i> Level</span>
+          <span class="spec-value" id="course-modal-level-val">Undergraduate</span>
+        </div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-body-section">
+        <h4>Programme Overview</h4>
+        <p id="course-modal-body" class="modal-text-content">Programme summary goes here.</p>
+      </div>
+
+      <div class="modal-footer-note">
+        <i class="fa-solid fa-link"></i>
+        <span>Official syllabus, fee structures, and eligibility criteria are maintained on the official JAIN University
+          portal.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-crest-group">
+          <div class="brand-crest footer-crest">
+            <span class="brand-crest-letter">JU</span>
+          </div>
+          <div>
+            <h4 class="footer-brand-title">JAIN (Deemed-to-be University)</h4>
+            <span class="footer-brand-sub">Bengaluru, Karnataka, India</span>
+          </div>
+        </div>
+
+        <p class="footer-address">
+          <i class="fa-solid fa-location-dot"></i>
+          #44/4, District Fund Road, Jayanagar 9th Block, Bengaluru – 560041, Karnataka, India
+        </p>
+        <p class="footer-contact"><i class="fa-solid fa-phone"></i> 080 6927 9444</p>
+        <p class="footer-contact"><i class="fa-solid fa-envelope"></i> admissions@jainuniversity.ac.in</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses &amp; Programmes</a></li>
+          <li><a href="#highlights">Institutional Highlights</a></li>
+          <li><a href="#campus">Campus Facilities</a></li>
+          <li><a href="#events">Upcoming Events</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Official Portals</h4>
+        <ul>
+          <li><a href="https://www.jainuniversity.ac.in/" target="_blank" rel="noopener">Official University Portal <i
+                class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+          <li><a href="https://www.jainuniversity.ac.in/newweb-beta/undergraduate-programmes" target="_blank"
+              rel="noopener">UG Admissions &bull; 2026 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+          <li><a href="https://www.jainuniversity.ac.in/newweb-beta/postgraduate-programmes" target="_blank"
+              rel="noopener">PG Admissions &bull; 2026 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+          <li><a href="https://www.jainuniversity.ac.in/newweb-beta/admissions-jain/doctoral-admissions" target="_blank"
+              rel="noopener">Doctoral &amp; Ph.D. Info <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-note">
+        <h4>Institutional Vision</h4>
+        <p class="project-disclaimer">
+          <strong>JAIN (Deemed-to-be University)</strong> is committed to fostering academic integrity, transformative
+          research, entrepreneurial leadership, and socially impactful learning for global citizenship.
+        </p>
+        <span class="accreditation-pill">
+          <i class="fa-solid fa-award"></i> NAAC 'A++' Accredited
+        </span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>MyCollege &bull; JAIN (Deemed-to-be University) &copy; 2026. All Rights Reserved.</p>
+        <p class="footer-tagline">Excellence in Education &bull; Innovation &bull; Research</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ BACK TO TOP ============ -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

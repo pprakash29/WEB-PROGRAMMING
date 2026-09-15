@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSphere - Book Information</title>
+</head>
+
+<!-- Classic HTML frameset is used because it is specifically required by the lab assignment. -->
+<frameset cols="34%,66%" frameborder="0" border="0">
+    <frame src="books.html" name="booksFrame" title="Book Library">
+    <frame src="book-details.html?book=0" name="detailsFrame" title="Book Information">
+    <noframes>
+        <body>
+            <h2>BookSphere</h2>
+            <p>Your browser does not support HTML frames. Please use a modern browser with frameset support.</p>
+        </body>
+    </noframes>
+</frameset>
+</html>

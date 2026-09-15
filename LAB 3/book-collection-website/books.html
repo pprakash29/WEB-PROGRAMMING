@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSphere Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="library-page">
+    <header class="library-header">
+        <div class="brand-lockup">
+            <div class="brand-mark">B<span>+</span></div>
+            <div>
+                <div class="brand">BookSphere</div>
+                <p>Your personal reading shelf</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="controls">
+        <div class="search-wrap">
+            <span>⌕</span>
+            <input type="search" id="searchBox" placeholder="Search title or author..." oninput="renderBooks()" aria-label="Search books">
+            <button id="clearSearch" class="clear-search" onclick="clearSearch()" aria-label="Clear search" hidden>×</button>
+        </div>
+        <select id="categoryFilter" onchange="renderBooks()" aria-label="Filter by category">
+            <option value="All">All genres</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="History">History</option>
+            <option value="Finance">Finance</option>
+            <option value="Biography">Biography</option>
+        </select>
+        <select id="sortFilter" onchange="renderBooks()" aria-label="Sort books">
+            <option value="featured">Featured</option>
+            <option value="title">Title A–Z</option>
+            <option value="rating">Highest rated</option>
+            <option value="year">Newest first</option>
+        </select>
+    </section>
+
+    <div class="library-stats">
+        <div>
+            <strong id="bookCount">10 books</strong>
+            <span class="stats-dot">•</span>
+            <span id="readingCount">0 finished</span>
+        </div>
+    </div>
+
+    <main id="bookList" class="book-list"></main>
+
+    <footer class="library-footer">
+        <span>10 curated books</span>
+        <span>•</span>
+        <span>Interactive Library</span>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderBooks();
+            applySavedTheme();
+        });
+    </script>
+</body>
+</html>

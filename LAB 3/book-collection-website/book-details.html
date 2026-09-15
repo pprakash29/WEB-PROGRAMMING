@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSphere Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="details-page">
+    <header class="details-header">
+        <div class="brand-lockup">
+            <div class="brand-mark">B<span>+</span></div>
+            <div>
+                <div class="brand">BookSphere</div>
+                <div class="eyebrow">BOOK INFORMATION</div>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">☾</button>
+        </div>
+    </header>
+
+    <main id="detailsContent" class="details-content"></main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            applySavedTheme();
+            const params = new URLSearchParams(window.location.search);
+            loadBook(Number(params.get("book")) || 0);
+        });
+    </script>
+</body>
+</html>
