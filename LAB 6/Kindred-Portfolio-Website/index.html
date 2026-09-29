@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple portfolio for a frontend developer who builds clear, useful websites.">
+  <title>Kindred | Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="home">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="Kindred Studio home">
+        <span class="brand-mark">✦</span>
+        <span>kindred<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#features">What I do</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-orb orb-one"></div>
+      <div class="hero-orb orb-two"></div>
+      <div class="container hero-content">
+        <p class="eyebrow reveal">HELLO, I'M A FRONTEND DEVELOPER</p>
+        <h1 id="hero-title" class="hero-title reveal">I make websites <span>simple.</span></h1>
+        <p class="hero-description reveal">I design and build clear, friendly websites that help people find information and take action.</p>
+        <a class="button button-primary reveal" href="#contact">Let's work together <span>↗</span></a>
+        <div class="hero-note reveal"><span class="pulse-dot"></span> Available for meaningful projects</div>
+        <div class="hero-scroll" aria-hidden="true"><span class="scroll-line"></span> Scroll to discover</div>
+      </div>
+    </section>
+
+    <section class="content-section about-section" id="about" aria-labelledby="about-title">
+      <div class="container split-layout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">A LITTLE ABOUT ME</p>
+          <h2 id="about-title">People first.<br><em>Always.</em></h2>
+        </div>
+        <div class="about-card reveal">
+          <span class="quote-mark">“</span>
+          <p class="about-quote">A good website should answer questions, not create more of them.</p>
+          <p class="muted-copy">I care about thoughtful layouts, readable content, and small details that make a website feel easy to use.</p>
+          <div class="card-footer"><span class="mini-line"></span><span>DESIGN WITH PURPOSE</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section features-section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">WHAT I DO</p>
+          <h2 id="features-title">Simple work.<br><em>Real value.</em></h2>
+          <p class="section-intro">A small set of skills focused on making your message clearer and your website more useful.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal" tabindex="0" data-card="design">
+            <div class="feature-icon icon-paint">✦</div>
+            <p class="feature-number">01 / 03</p>
+            <h3>Plan</h3>
+            <p>Understand the goal, audience, and content before writing a line of code.</p>
+            <span class="card-arrow">↗</span>
+          </article>
+          <article class="feature-card reveal" tabindex="0" data-card="motion">
+            <div class="feature-icon icon-bolt">ϟ</div>
+            <p class="feature-number">02 / 03</p>
+            <h3>Design</h3>
+            <p>Create clean layouts that make important information easy to see and understand.</p>
+            <span class="card-arrow">↗</span>
+          </article>
+          <article class="feature-card reveal" tabindex="0" data-card="responsive">
+            <div class="feature-icon icon-phone">⌁</div>
+            <p class="feature-number">03 / 03</p>
+            <h3>Build</h3>
+            <p>Use responsive HTML, CSS, and JavaScript to make the idea work on every screen.</p>
+            <span class="card-arrow">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-layout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2 id="contact-title">Have an idea?<br><em>Let's talk.</em></h2>
+          <p class="section-intro">Tell me what you are building, what you need, or simply say hello.</p>
+        </div>
+        <form class="contact-form reveal" novalidate>
+          <label for="name">Your name<input id="name" name="name" type="text" placeholder="Your name or organisation" required></label>
+          <label for="email">Email address<input id="email" name="email" type="email" placeholder="you@example.com" required></label>
+          <label for="message">Your message<textarea id="message" name="message" rows="4" placeholder="Tell me a little about your idea..." required></textarea></label>
+          <button class="button button-primary" type="submit">Send message <span>↗</span></button>
+          <p class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <a class="brand" href="#home"><span class="brand-mark">✦</span><span>kindred<span class="brand-dot">.</span></span></a>
+      <p>© <span id="year"></span> Kindred Studio. Made with care.</p>
+      <div class="social-links" aria-label="Social links">
+        <a href="#contact" aria-label="Instagram">ig</a>
+        <a href="#contact" aria-label="Dribbble">db</a>
+        <a href="#contact" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+  <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
