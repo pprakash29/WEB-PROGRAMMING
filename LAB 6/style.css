@@ -1,0 +1,77 @@
+/* Page background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #333;
+}
+
+/* Main container */
+.container {
+    width: 70%;
+    margin: 60px auto;
+    padding: 30px;
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border: 3px solid #2c3e50;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Main heading */
+h1 {
+    text-align: center;
+    color: #1a5276;
+
+    border-bottom: 3px solid #1a5276;
+    padding-bottom: 15px;
+}
+
+/* Introduction paragraph */
+.intro {
+    text-align: center;
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Content box */
+.content-box {
+    margin-top: 25px;
+    padding: 20px;
+
+    border: 2px solid #3498db;
+    border-radius: 10px;
+
+    background-color: #eaf6ff;
+}
+
+.content-box h2 {
+    color: #21618c;
+}
+
+.content-box p {
+    color: #444;
+    line-height: 1.7;
+}
+
+/* Highlight section */
+.highlight {
+    margin-top: 25px;
+    padding: 15px;
+
+    border: 2px dashed #e67e22;
+    background-color: #fff3e0;
+
+    color: #a04000;
+    text-align: center;
+    border-radius: 8px;
+}

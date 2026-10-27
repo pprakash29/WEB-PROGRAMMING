@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A polished user information form">
+  <title>ProfileDesk | User Information</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="form.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container-wide" aria-label="Main navigation">
+      <a class="brand" href="index.html"><span class="brand-mark">P</span><span>ProfileDesk</span></a>
+      <div class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="display.html">User Details</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="nav-actions">
+        <span class="live-clock" id="liveClock" aria-label="Current date and time"></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell container-wide">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">PERSONAL PROFILE</p>
+        <h1>Tell us a little<br><span>about yourself.</span></h1>
+        <p class="hero-copy">Create your profile in seconds. Your information stays safely in this browser and is always under your control.</p>
+        <div class="dashboard-pill"><span class="status-dot"></span><strong id="saveStatus">No profile saved yet</strong><span class="dashboard-divider"></span><span>Local &amp; private</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-card"><span>✦</span><strong>Simple.</strong><small>Secure. Yours.</small></div></div>
+    </section>
+
+    <section class="form-card" aria-labelledby="form-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">GET STARTED</p><h2 id="form-title">Your information</h2><p class="form-intro">Complete your profile one step at a time. Your progress is saved as you type.</p></div>
+        <span class="required-note">* Required fields</span>
+      </div>
+      <div class="progress-panel" aria-live="polite">
+        <div class="progress-copy"><strong id="progressLabel">0% complete</strong><span id="draftStatus">Ready when you are</span></div>
+        <div class="progress-track"><span id="progressBar"></span></div>
+      </div>
+      <form id="userForm" novalidate>
+        <div class="form-grid">
+          <div class="field field-wide">
+            <label for="name">Full name <span>*</span></label>
+            <div class="input-wrap"><span class="field-icon">♙</span><input type="text" id="name" name="name" maxlength="60" autocomplete="name" placeholder="e.g. Alex Johnson" required><span class="valid-icon" aria-hidden="true">✓</span></div>
+            <div class="field-meta"><small class="error-message" id="nameError"></small><small id="nameCount">0 / 60</small></div>
+          </div>
+          <fieldset class="field field-wide gender-field">
+            <legend>Gender <span>*</span></legend>
+            <div class="gender-options">
+              <label class="choice-card"><input type="radio" name="gender" value="Female" required><span>♀</span> Female</label>
+              <label class="choice-card"><input type="radio" name="gender" value="Male"><span>♂</span> Male</label>
+              <label class="choice-card"><input type="radio" name="gender" value="Other"><span>⚧</span> Other</label>
+            </div>
+            <small class="error-message" id="genderError"></small>
+          </fieldset>
+          <div class="field"><label for="mobile">Mobile number <span>*</span></label><div class="input-wrap"><span class="field-icon">⌕</span><input type="tel" id="mobile" name="mobile" maxlength="10" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" required><span class="valid-icon">✓</span></div><small class="error-message" id="mobileError"></small></div>
+          <div class="field"><label for="email">Email address <span>*</span></label><div class="input-wrap"><span class="field-icon">@</span><input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required><span class="valid-icon">✓</span></div><small class="error-message" id="emailError"></small></div>
+          <div class="field"><label for="city">City <span>*</span></label><div class="input-wrap"><span class="field-icon">⌖</span><input type="text" id="city" name="city" autocomplete="address-level2" placeholder="Your city" required><span class="valid-icon">✓</span></div><small class="error-message" id="cityError"></small></div>
+          <div class="field"><label for="state">State <span>*</span></label><div class="input-wrap"><span class="field-icon">◈</span><input type="text" id="state" name="state" autocomplete="address-level1" placeholder="Your state" required><span class="valid-icon">✓</span></div><small class="error-message" id="stateError"></small></div>
+          <div class="field"><label for="country">Country <span>*</span></label><div class="input-wrap"><span class="field-icon">◎</span><input type="text" id="country" name="country" autocomplete="country-name" placeholder="Your country" required><span class="valid-icon">✓</span></div><small class="error-message" id="countryError"></small></div>
+        </div>
+        <div class="form-actions"><button class="button secondary-button" id="clearButton" type="button">Clear form</button><button class="button primary-button" id="submitButton" type="submit"><span class="button-label">Save my details <span>→</span></span><span class="loading-spinner" hidden></span></button></div>
+      </form>
+    </section>
+    <section class="about-section" id="about"><p class="eyebrow">WHY PROFILEDESK?</p><h2>Built for clarity.</h2><p>Your details are stored locally on this device. No account, server, or third-party tracking required.</p></section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="confirmModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><span class="modal-icon">!</span><h2 id="modalTitle">Clear this form?</h2><p>All values entered so far will be removed.</p><div class="modal-actions"><button class="button secondary-button" id="cancelModal" type="button">Keep editing</button><button class="button danger-button" id="confirmModalButton" type="button">Clear form</button></div></div></div>
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+</body>
+</html>

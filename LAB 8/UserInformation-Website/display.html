@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View and manage your saved profile">
+  <title>ProfileDesk | User Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="display.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav container-wide" aria-label="Main navigation"><a class="brand" href="index.html"><span class="brand-mark">P</span><span>ProfileDesk</span></a><div class="nav-links"><a href="index.html">Home</a><a class="active" href="display.html">User Details</a><a href="index.html#about">About</a></div><div class="nav-actions"><span class="live-clock" id="liveClock"></span></div></nav></header>
+  <main class="page-shell container-narrow">
+    <div class="details-heading"><div><p class="eyebrow">YOUR PROFILE</p><h1>User details</h1><p id="message" class="subheading" aria-live="polite"></p></div><span class="saved-badge" id="savedBadge">● Saved locally</span></div>
+    <section class="profile-card" id="profileCard" hidden><div class="profile-top"><div class="avatar" id="avatar">A</div><div><p class="eyebrow">PROFILE CARD</p><h2 id="profileName"></h2><p id="profileLocation"></p><small class="last-updated" id="lastUpdated"></small></div></div><div class="profile-summary"><div><strong>100%</strong><span>Profile complete</span></div><div><strong>Private</strong><span>Stored on device</span></div><div><strong id="detailCount">7</strong><span>Details saved</span></div></div><div class="details-list" id="detailsList"></div><div class="profile-actions"><button class="button secondary-button" id="editButton" type="button">✎ Edit details</button><button class="button danger-outline-button" id="deleteButton" type="button">⌫ Delete details</button><a class="button primary-button" href="index.html">＋ Add new profile</a></div></section>
+    <section class="empty-state" id="emptyState" hidden><div class="empty-icon">◎</div><h2>Your profile is waiting</h2><p>No saved information found yet. Complete the form to see your details here.</p><a class="button primary-button" href="index.html">Create my profile <span>→</span></a></section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="confirmModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><span class="modal-icon danger">!</span><h2 id="modalTitle">Delete saved details?</h2><p>This action cannot be undone. Your profile will be removed from this browser.</p><div class="modal-actions"><button class="button secondary-button" id="cancelModal" type="button">Cancel</button><button class="button danger-button" id="confirmModalButton" type="button">Delete details</button></div></div></div>
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+</body>
+</html>
