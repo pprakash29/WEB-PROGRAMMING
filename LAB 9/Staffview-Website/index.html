@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StaffView | Employee Information System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="dashboard">
+        <nav class="site-nav" aria-label="Main navigation">
+            <a class="brand" href="#" aria-label="StaffView home">
+                <span class="brand-mark">S</span> StaffView
+            </a>
+            <div class="nav-links">
+                <a href="#top">Dashboard</a>
+                <a href="#directory">Employees</a>
+                <a href="#import">Import XML</a>
+                <a class="nav-button" href="#directory">View Directory <span>→</span></a>
+            </div>
+        </nav>
+
+        <section class="upload-panel" id="import" aria-labelledby="uploadTitle">
+            <div>
+                <h2 id="uploadTitle">Import Employee XML</h2>
+                <p id="fileStatus" class="status" role="status">No file selected yet.</p>
+            </div>
+            <label class="drop-zone" id="dropZone" for="xmlFile">
+                <span class="upload-icon" aria-hidden="true">♧</span>
+                <span><strong>Upload employee.xml</strong></span>
+                <small>Drag and drop your XML file here</small>
+                <input type="file" id="xmlFile" accept=".xml,text/xml,application/xml">
+            </label>
+        </section>
+
+        <section class="stats" aria-label="Employee summary">
+            <article><span class="stat-icon">♙</span><span>Total employees</span><strong id="totalEmployees">0</strong><small>Imported records</small></article>
+            <article><span class="stat-icon">▦</span><span>Total departments</span><strong id="totalDepartments">0</strong><small>Unique departments</small></article>
+            <article><span class="stat-icon">◈</span><span>Average salary</span><strong id="averageSalary">₹0</strong><small>Across all employees</small></article>
+            <article><span class="stat-icon">↗</span><span>Highest salary</span><strong id="highestSalary">₹0</strong><small>Top salary recorded</small></article>
+        </section>
+
+        <section class="directory" id="directory">
+            <div class="directory-heading">
+                <div>
+                    <p class="eyebrow">PEOPLE OPERATIONS</p>
+                    <h2>Employee Directory</h2>
+                    <p class="directory-intro">Manage your people and explore their profiles.</p>
+                </div>
+                <span id="directoryCount" class="directory-count">0 employees</span>
+            </div>
+            <div class="directory-summary" aria-label="Directory summary">
+                <span><strong id="directoryTotal">0</strong> Total employees</span>
+                <span><strong id="directoryActive">0</strong> Active</span>
+                <span><strong id="directoryLeave">0</strong> On leave</span>
+                <span><strong id="directoryDepartments">0</strong> Departments</span>
+            </div>
+            <div class="toolbar">
+                <label class="search-box" for="searchInput">
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" id="searchInput" placeholder="Search name, ID, email or designation" disabled>
+                </label>
+                <select id="departmentFilter" aria-label="Filter by department" disabled>
+                    <option value="all">All departments</option>
+                </select>
+                <select id="statusFilter" aria-label="Filter by employment status" disabled>
+                    <option value="all">All statuses</option>
+                </select>
+                <select id="typeFilter" aria-label="Filter by employment type" disabled>
+                    <option value="all">All types</option>
+                </select>
+                <select id="sortFilter" aria-label="Sort employees">
+                    <option value="name">Sort: Name</option>
+                    <option value="id">Sort: Employee ID</option>
+                    <option value="salary">Sort: Salary</option>
+                </select>
+                <button id="clearButton" class="secondary-button" type="button" disabled>Clear filters</button>
+            </div>
+            <p id="resultStatus" class="result-status">Employee records will appear here after XML upload.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><button class="sort-button" data-sort="name" type="button">Employee <span>↕</span></button></th>
+                            <th><button class="sort-button" data-sort="id" type="button">Employee ID <span>↕</span></button></th>
+                            <th><button class="sort-button" data-sort="title" type="button">Job title <span>↕</span></button></th>
+                            <th><button class="sort-button" data-sort="department" type="button">Department <span>↕</span></button></th>
+                            <th>Email</th>
+                            <th><button class="sort-button" data-sort="location" type="button">Location <span>↕</span></button></th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeData">
+                        <tr class="empty-row"><td colspan="8">Your employee records will appear here after XML upload.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="employeeDialog">
+        <button id="closeDialog" class="close-button" type="button" aria-label="Close details">×</button>
+        <div class="profile-header">
+            <span id="dialogAvatar" class="profile-avatar large"></span>
+            <div>
+                <p class="eyebrow">EMPLOYEE PROFILE</p>
+                <h2 id="dialogName"></h2>
+                <p id="dialogTitle" class="profile-subtitle"></p>
+            </div>
+        </div>
+        <div class="profile-status-row">
+            <span id="dialogStatus" class="status-badge"></span>
+            <span id="dialogId" class="profile-id"></span>
+        </div>
+        <section class="profile-section">
+            <h3><span aria-hidden="true">⌁</span> Personal information</h3>
+            <dl class="profile-details">
+                <div><dt>Email address</dt><dd id="dialogEmail"></dd></div>
+                <div><dt>Phone number</dt><dd id="dialogPhone"></dd></div>
+                <div><dt>Office location</dt><dd id="dialogLocation"></dd></div>
+                <div><dt>Department</dt><dd id="dialogDepartment"></dd></div>
+            </dl>
+        </section>
+        <section class="profile-section">
+            <h3><span aria-hidden="true">▣</span> Employment details</h3>
+            <dl class="profile-details">
+                <div><dt>Joining date</dt><dd id="dialogJoiningDate"></dd></div>
+                <div><dt>Employment type</dt><dd id="dialogType"></dd></div>
+                <div><dt>Reporting manager</dt><dd id="dialogManager"></dd></div>
+                <div><dt>Job designation</dt><dd id="dialogTitleDetail"></dd></div>
+            </dl>
+        </section>
+        <section class="profile-section compensation-section">
+            <h3><span aria-hidden="true">₹</span> Compensation</h3>
+            <div class="salary-display">
+                <span>Monthly salary</span>
+                <strong id="dialogSalary"></strong>
+            </div>
+        </section>
+    </dialog>
+
+    <template id="emptyTemplate">
+        <tr class="empty-row"><td colspan="8">No employees match your current filters.</td></tr>
+    </template>
+
+    <footer>© 2026 StaffView – Employee Information System</footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

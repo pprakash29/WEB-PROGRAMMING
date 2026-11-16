@@ -1,0 +1,92 @@
+
+<employees>
+    <employee>
+        <id>101</id>
+        <name>Sowmiya</name>
+        <title>Registered Nurse</title>
+        <department>Nursing</department>
+        <email>sowmiya@staffview.com</email>
+        <phone>+91 98765 41001</phone>
+        <location>Chennai, India</location>
+        <joiningDate>2021-06-14</joiningDate>
+        <employmentType>Full-time</employmentType>
+        <employmentStatus>Active</employmentStatus>
+        <manager>Dr. Meena Rao</manager>
+        <salary>50000</salary>
+    </employee>
+
+    <employee>
+        <id>102</id>
+        <name>Prakash</name>
+        <title>Senior Software Engineer</title>
+        <department>Software</department>
+        <email>prakash@staffview.com</email>
+        <phone>+91 98765 41002</phone>
+        <location>Bengaluru, India</location>
+        <joiningDate>2020-02-10</joiningDate>
+        <employmentType>Full-time</employmentType>
+        <employmentStatus>Active</employmentStatus>
+        <manager>Vikram Shah</manager>
+        <salary>75000</salary>
+    </employee>
+
+    <employee>
+        <id>103</id>
+        <name>Pradeepa</name>
+        <title>Financial Analyst</title>
+        <department>Finance</department>
+        <email>pradeepa@staffview.com</email>
+        <phone>+91 98765 41003</phone>
+        <location>Mumbai, India</location>
+        <joiningDate>2022-08-22</joiningDate>
+        <employmentType>Full-time</employmentType>
+        <employmentStatus>On Leave</employmentStatus>
+        <manager>Neha Kapoor</manager>
+        <salary>45000</salary>
+    </employee>
+
+    <employee>
+        <id>104</id>
+        <name>Uhith</name>
+        <title>Marketing Specialist</title>
+        <department>Marketing</department>
+        <email>uhith@staffview.com</email>
+        <phone>+91 98765 41004</phone>
+        <location>Hyderabad, India</location>
+        <joiningDate>2023-01-16</joiningDate>
+        <employmentType>Full-time</employmentType>
+        <employmentStatus>Active</employmentStatus>
+        <manager>Anita Menon</manager>
+        <salary>52000</salary>
+    </employee>
+
+    <employee>
+        <id>105</id>
+        <name>Rahul</name>
+        <title>People Operations Associate</title>
+        <department>Human Resources</department>
+        <email>rahul@staffview.com</email>
+        <phone>+91 98765 41005</phone>
+        <location>Pune, India</location>
+        <joiningDate>2022-11-07</joiningDate>
+        <employmentType>Contract</employmentType>
+        <employmentStatus>Active</employmentStatus>
+        <manager>Shalini Desai</manager>
+        <salary>58000</salary>
+    </employee>
+
+    <employee>
+        <id>106</id>
+        <name>Arun</name>
+        <title>Product Designer</title>
+        <department>Design</department>
+        <email>arun@staffview.com</email>
+        <phone>+91 98765 41006</phone>
+        <location>Delhi, India</location>
+        <joiningDate>2021-09-27</joiningDate>
+        <employmentType>Part-time</employmentType>
+        <employmentStatus>Inactive</employmentStatus>
+        <manager>Karan Malhotra</manager>
+        <salary>62000</salary>
+    </employee>
+</employees>
